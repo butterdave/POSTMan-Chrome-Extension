@@ -6017,6 +6017,10 @@ pm.request = {
 
         var macKey = $('#request-helper-basicAuth-username').val();
         var macSecret = $('#request-helper-basicAuth-password').val();
+
+        macKey = pm.envManager.convertString(macKey);
+        macSecret = pm.envManager.convertString(macSecret);
+
         var data = pm.request.getRequestBodyToBeSent();
 
         var auth = new Lcp.GenerateAuthHeader(
