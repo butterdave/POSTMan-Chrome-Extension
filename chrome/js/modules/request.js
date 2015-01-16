@@ -2016,6 +2016,21 @@ pm.request = {
             xhr.setRequestHeader(headers[i].name, headers[i].value);
         }
 
+        var macKey = $('#request-helper-basicAuth-username').val();
+        var macSecret = $('#request-helper-basicAuth-password').val();
+        var data = pm.request.getRequestBodyToBeSent();
+
+        var auth = new Lcp.GenerateAuthHeader(
+            method,
+            url,
+            macKey,
+            macSecret,
+            'application/json',
+            data
+        );
+        xhr.setRequestHeader('Authorization', auth.header)
+
+
         // Prepare body
         if (pm.request.isMethodWithBody(method)) {
             var body = pm.request.getRequestBodyToBeSent();
