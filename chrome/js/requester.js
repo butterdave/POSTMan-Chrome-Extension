@@ -20,7 +20,7 @@
 function Collection() {
     this.id = "";
     this.name = "";
-    this.requests = {}; 
+    this.requests = {};
 }
 
 function CollectionRequest() {
